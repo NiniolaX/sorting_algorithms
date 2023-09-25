@@ -39,6 +39,11 @@ int *merge_sort_helper(int *array, size_t size)
         int *new;
         size_t i, j, k;
 
+        if (size <= 1)
+                return (array);
+
+        printf("Merging...\n");
+
         /* Allocate memory for new array */
         new = malloc(sizeof(int) * size);
         if (new == NULL)
@@ -46,13 +51,18 @@ int *merge_sort_helper(int *array, size_t size)
 
         /* Sort left half */
         left_half = merge_sort_helper(left_half, mid);
+        printf("[Left]: ");
+        print_array(left_half, mid);
+
+        /* Sort right half */
         right_half = merge_sort_helper(right_half, size - mid);
+        printf("[Right]: ");
+        print_array(right_half, mid);
 
         /* Merge sorted halves */
         i = j = k = 0;
         while (i < mid && j < size - mid)
         {
-                printf("Merging...\n");
                 if (left_half[i] < right_half[j])
                 {
                         new[k] = left_half[i];
@@ -71,6 +81,9 @@ int *merge_sort_helper(int *array, size_t size)
                 new[k++] = left_half[i++];
         while (j < size - mid)
                 new[k++] = right_half[j++];
+
+        printf("[Done]");
+        print_array(new, size);
 
         return (new);
 }
