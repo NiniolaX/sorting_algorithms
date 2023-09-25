@@ -3,6 +3,8 @@
 
 #include <stddef.h>
 #include <limits.h>
+#include <stdlib.h>
+#include <stdio.h>
 /* Data Structures */
 /**
  * struct listint_s - Doubly linked list node
