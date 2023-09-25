@@ -2,27 +2,27 @@
 
 int lowest_num(int *array, size_t size, size_t idx);
 /**
- * selection_sort - Sorts an array of integers in ascending order using Selection
-    Sort algorithm.
+ * selection_sort - Sorts an array of integers in ascending order using
+ *	Selection Sort algorithm.
  * @array: Array of integers to be sorted
  * @size: Size of array
  * Return: Void
  */
 void selection_sort(int *array, size_t size)
 {
-    size_t i, lowest_num_idx;
-    int tmp;
+	size_t i, lowest_num_idx;
+	int tmp;
 
-    if (size < 2 || array == NULL)
-        return;
-    for (i = 0; i < size; i++)
-    {
-        lowest_num_idx = lowest_num(array, size, i);
-        tmp = array[i];
-        array[i] = array[lowest_num_idx];
-        array[lowest_num_idx] = tmp;
-        print_array(array, size);
-    }
+	if (size < 2 || array == NULL)
+		return;
+	for (i = 0; i < size; i++)
+	{
+		lowest_num_idx = lowest_num(array, size, i);
+		tmp = array[i];
+		array[i] = array[lowest_num_idx];
+		array[lowest_num_idx] = tmp;
+		print_array(array, size);
+	}
 }
 
 /**
@@ -34,17 +34,17 @@ void selection_sort(int *array, size_t size)
  */
 int lowest_num(int *array, size_t size, size_t idx)
 {
-    size_t i;
-    int lowest_val = INT_MAX, lowest_idx;
+	size_t i;
+	int lowest_val = INT_MAX, lowest_idx;
 
-    for (i = idx; i < size; i++)
-    {
-        if (array[i] < lowest_val)
-        {
-            lowest_val = array[i];
-            lowest_idx = i;
-        }
-    }
+	for (i = idx; i < size; i++)
+	{
+		if (array[i] < lowest_val)
+		{
+			lowest_val = array[i];
+			lowest_idx = i;
+		}
+	}
 
-    return lowest_idx;
+	return (lowest_idx);
 }
