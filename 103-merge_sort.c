@@ -18,7 +18,7 @@ void merge_sort(int *array, size_t size)
 
         sorted_array = merge_sort_helper(array, size);
 
-        /* Copy values in sorted array back to array */
+        /* Copy values in sorted array to original array */
         for (i = 0; i < size; i++)
                 array[i] = sorted_array[i];
 
@@ -42,7 +42,6 @@ int *merge_sort_helper(int *array, size_t size)
         if (size <= 1)
                 return (array);
 
-        printf("Merging...\n");
 
         /* Allocate memory for new array */
         new = malloc(sizeof(int) * size);
@@ -51,15 +50,12 @@ int *merge_sort_helper(int *array, size_t size)
 
         /* Sort left half */
         left_half = merge_sort_helper(left_half, mid);
-        printf("[Left]: ");
-        print_array(left_half, mid);
 
         /* Sort right half */
         right_half = merge_sort_helper(right_half, size - mid);
-        printf("[Right]: ");
-        print_array(right_half, mid);
 
         /* Merge sorted halves */
+        printf("Merging...\n");
         i = j = k = 0;
         while (i < mid && j < size - mid)
         {
@@ -75,6 +71,11 @@ int *merge_sort_helper(int *array, size_t size)
                 }
                 k++;
         }
+        printf("[left]: ");
+        print_array(left_half, mid);
+
+        printf("[right]: ");
+        print_array(right_half, size - mid);
 
         /* Copy remaining elements from each half, if any */
         while (i < mid)
@@ -82,7 +83,7 @@ int *merge_sort_helper(int *array, size_t size)
         while (j < size - mid)
                 new[k++] = right_half[j++];
 
-        printf("[Done]");
+        printf("[Done]: ");
         print_array(new, size);
 
         return (new);
