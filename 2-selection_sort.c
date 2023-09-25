@@ -18,10 +18,13 @@ void selection_sort(int *array, size_t size)
 	for (i = 0; i < size; i++)
 	{
 		lowest_num_idx = lowest_num(array, size, i);
-		tmp = array[i];
-		array[i] = array[lowest_num_idx];
-		array[lowest_num_idx] = tmp;
-		print_array(array, size);
+		if (lowest_num_idx != i)
+		{
+			tmp = array[i];
+			array[i] = array[lowest_num_idx];
+			array[lowest_num_idx] = tmp;
+			print_array(array, size);
+		}
 	}
 }
 
