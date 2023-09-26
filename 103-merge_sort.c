@@ -1,6 +1,6 @@
 #include "sort.h"
 
-int *merge_sort_helper(int *array, size_t size);
+int *merge_sort_helper(int *array, size_t size, int *new);
 /**
  * merge_sort - Sorts an array of integers in ascending order using Merge
  *      Sort algorithm.
@@ -16,7 +16,10 @@ void merge_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	sorted_array = merge_sort_helper(array, size);
+	sorted_array = malloc(sizeof(int) * size);
+	if (sorted_array == NULL)
+		return;
+	sorted_array = merge_sort_helper(array, size, sorted_array);
 
 	/* Copy values in sorted array to original array */
 	for (i = 0; i < size; i++)
@@ -30,29 +33,23 @@ void merge_sort(int *array, size_t size)
  * merge_sort_helper - Sorts an array of integers using Merge Sort algorithm
  * @array: Array to be sorted
  * @size: Size of array
+ * @new: Array to store sorted integers
  * Return: Sorted array
  */
-int *merge_sort_helper(int *array, size_t size)
+int *merge_sort_helper(int *array, size_t size, int *new)
 {
 	size_t mid = size / 2;
 	int *left_half = array, *right_half = array + mid;
-	int *new;
 	size_t i, j, k;
 
 	if (size <= 1)
 		return (array);
 
-
-	/* Allocate memory for new array */
-	new = malloc(sizeof(int) * size);
-	if (new == NULL)
-		return (NULL);
-
 	/* Sort left half */
-	left_half = merge_sort_helper(left_half, mid);
+	left_half = merge_sort_helper(left_half, mid, new + mid);
 
 	/* Sort right half */
-	right_half = merge_sort_helper(right_half, size - mid);
+	right_half = merge_sort_helper(right_half, size - mid, new + size - mid);
 
 	/* Merge sorted halves */
 	printf("Merging...\n");
