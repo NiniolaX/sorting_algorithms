@@ -71,10 +71,10 @@ int *merge_sort_helper(int *array, size_t size)
 		}
 		k++;
 	}
-	printf(" [left]: ");
+	printf("[left]: ");
 	print_array(left_half, mid);
 
-	printf(" [right]: ");
+	printf("[right]: ");
 	print_array(right_half, size - mid);
 
 	/* Copy remaining elements from each half, if any */
@@ -83,7 +83,7 @@ int *merge_sort_helper(int *array, size_t size)
 	while (j < size - mid)
 		new[k++] = right_half[j++];
 
-	printf(" [Done]: ");
+	printf("[Done]: ");
 	print_array(new, size);
 
 	return (new);
