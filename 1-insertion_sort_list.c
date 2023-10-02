@@ -1,12 +1,12 @@
 #include "sort.h"
 
 /**
- * insertion_sort - Sorts a double linked list using
+ * insertion_sort_list - Sorts a double linked list using
  * insertion sorting algorithm
  * @list: Doubly linked list of integers to be sorted.
  * Return: Void
 */
-void insertion_sort(listint_t **list)
+void insertion_sort_list(listint_t **list)
 {
 	listint_t  *sorted_head, *current, *previous, *swap_previous, *swap_current;
 	/* Check if list is sorted(single element) or list is empty */
